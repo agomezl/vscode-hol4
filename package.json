@@ -13,7 +13,14 @@
         "languages": [{
             "id": "hol",
             "aliases": ["HOL", "hol"],
-            "extensions": [".sml"],
+            "extensions": [
+                ".fun",
+                ".sig",
+                ".sml",
+                ".cm",
+                ".lex",
+                ".grm"
+              ],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
