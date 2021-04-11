@@ -1,0 +1,25 @@
+{
+    "name": "hol4",
+    "displayName": "HOL4",
+    "description": "HOL4 Theorem prover support",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.55.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "hol",
+            "aliases": ["HOL", "hol"],
+            "extensions": [".sml"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "hol",
+            "scopeName": "source.sml",
+            "path": "./syntaxes/hol.tmLanguage.json"
+        }]
+    }
+}
