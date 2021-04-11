@@ -13,6 +13,12 @@
         ["(", ")"],
         ["`", "`"]
     ],
+    "folding": {
+      "markers": {
+        "start": "^(Proof|Termination)\\s*$",
+        "end": "^(End|QED)\\s*$"
+      }
+    },
     "surroundingPairs": [
         ["{",  "}"],
         ["(",  ")"],

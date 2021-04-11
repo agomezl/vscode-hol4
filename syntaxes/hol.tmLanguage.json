@@ -3,19 +3,109 @@
 	"name": "HOL",
 	"patterns": [
 		{
-			"include": "#keywords"
+			"include" : "#comment"
+		},
+		{
+			"include": "#sml-keywords"
+		},
+		{
+			"include": "#hol-decl"
+		},
+		{
+			"include": "#hol-keywords"
 		},
 		{
 			"include": "#strings"
 		}
 	],
 	"repository": {
-		"keywords": {
+		"sml-keywords": {
 			"patterns": [{
-				"name": "keyword.control.hol",
-				"match": "\\b(if|while|for|return)\\b"
+				"name": "keyword.other.sml",
+				"match": "\\b(let|local|in|end|fun|val|open)\\b"
 			}]
 		},
+		"hol-keywords": {
+			"patterns": [
+				{
+					"name": "keyword.other.hol",
+					"match" : "^(?:End|QED)"
+				},
+				{
+					"name": "keyword.other.hol",
+					"match": "Define|Datatype|Hol_reln"
+
+				}
+			]
+		},
+		"hol-decl" : {
+			"patterns" : [
+				{
+					"match": "^(Theorem|Triviality|Overload)[[:space:]]+([A-Za-z0-9'_]+)(?:\\[[^\\]]*\\])?=",
+					"name" : "hol.decl",
+					"captures": {
+				  	"1" : {
+				  		"name" : "keyword.other.hol"
+			  		},
+			  		"2" : {
+			  			"name" : "entity.name.function.hol"
+			  		}
+					}
+				},
+				{
+			  	"begin" : "^(Datatype):",
+			  	"end"   : "^(End)",
+			  	"name" : "hol.decl",
+					"contentName" : "markup.italic.hol",
+			  	"captures": {
+				  	"1" : {
+				  		"name" : "keyword.other.hol"
+			  		},
+			  		"2" : {
+			  			"name" : "entity.name.function.hol"
+			  		}
+					}
+			  },
+				{
+			  	"begin" : "^(Theorem|Triviality)[[:space:]]+([A-Za-z0-9'_]+)(?:\\[[^\\]]*\\])?:",
+			  	"end"   : "^(Proof)",
+			  	"name" : "hol.decl",
+					"contentName" : "markup.italic.hol",
+			  	"captures": {
+				  	"1" : {
+				  		"name" : "keyword.other.hol"
+			  		},
+			  		"2" : {
+			  			"name" : "entity.name.function.hol"
+			  		}
+					}
+			  },
+				{
+					"begin" : "^(Definition|(?:Co)?Inductive)[[:space:]]+([A-Za-z0-9'_]+)(?:\\[[^\\]]*\\])?:",
+			  	"end"   : "^(End|Termination)",
+			  	"name" : "hol.decl",
+					"contentName" : "markup.italic.hol",
+			  	"captures": {
+				  	"1" : {
+				  		"name" : "keyword.other.hol"
+			  		},
+			  		"2" : {
+			  			"name" : "entity.name.function.hol"
+			  		}
+					}
+				}
+			]
+		},
+		"comment": {
+      "begin": "\\(\\*",
+      "end": "\\*\\)",
+      "name": "comment",
+      "patterns": [
+        {
+          "include": "#comment"
+        }
+      ]
+    },
 		"strings": {
 			"name": "string.quoted.double.hol",
 			"begin": "\"",
